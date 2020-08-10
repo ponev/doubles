@@ -87,7 +87,8 @@ class App extends Component {
   startGameHandler = event => {
     event.preventDefault()
     this.setState({
-      gameStart: true
+      gameStart: true,
+      gameOver: false
     })
   }
 
