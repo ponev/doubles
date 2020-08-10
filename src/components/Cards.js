@@ -1,16 +1,28 @@
 import React from 'react'
 
-export const Cards = () => {
-  let cards = new Array(16)
+export const Cards = ({cards, selectCard}) => {
 
   return (
-    <>
-      {cards.fill('').map((_, index) => (
-        <div className="card" key={index}>
+    cards.map((card) => {
+      const cls = ['card']
+
+      if (card.flipped) {
+        cls.push('flipped')
+      }
+      if (card.hide) {
+        cls.push('hide')
+      }
+
+      return (
+        <div
+          className={cls.join(' ')}
+          key={card.id}
+          onClick={() => {selectCard(card.id)}}
+        >
           <div className="front"/>
-          <div className="back"/>
+          <div className="back" style={{backgroundColor: card.color}}/>
         </div>
-      ))}
-    </>
+      )
+    })
   )
 }
