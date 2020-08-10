@@ -6,8 +6,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "core-js": "^3.6.5",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
@@ -23,10 +25,12 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dead",
+      "ie 9, ie 11, not dead, ie 10",
       "not op_mini all"
     ],
     "development": [
+      "ie 10",
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"

@@ -1,22 +1,32 @@
 import React from 'react'
 
-export const Start = () => {
+export const Start = ({changeSize, startGame}) => {
 
-  const selectSize = [
-    {value: 4, title: '4 на 4 клетки'},
-    {value: 6, title: '6 на 6 клеток'},
-    {value: 8, title: '8 на 8 клеток'},
-    {value: 12, title: '12 на 12 клеток'}
-  ].map(option => <option key={option.value} value={option.value}>{option.title}</option>)
+  const levels = [
+    {value: 4, title: 'Новичок'},
+    {value: 6, title: 'Уверенный'},
+    {value: 8, title: 'Эксперт'}
+  ]
 
   return (
-    // <div className="game-started">Игра началась!</div>
-    // <div className="game-over">Игра окончена!</div>
-    <form className="start-form">
+    <form
+      className="start-form"
+      onSubmit={e => startGame(e)}
+    >
       <select
-        className="select-size"
+        className="select-level"
+        onChange={e => changeSize(+e.target.value)}
       >
-        {selectSize}
+        {
+          levels.map(option => (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.title}
+            </option>
+          ))
+        }
       </select>
       <button className="btn">Начать игру</button>
     </form>
