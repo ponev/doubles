@@ -109,6 +109,7 @@ class App extends Component {
 
   render() {
     const {size, gameOver, gameStart, attemptsCount, cards} = this.state
+
     const clsGameContainer = ['game-container']
 
     if (size > 4) {
@@ -129,7 +130,7 @@ class App extends Component {
           <div className="intro">
             <div>
             { introHtml }
-            <Start changeSize={this.changeSizeHandler} startGame={this.startGameHandler} />
+            <Start size={size} changeSize={this.changeSizeHandler} startGame={this.startGameHandler} />
             </div>
           </div>
         }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Start = ({changeSize, startGame}) => {
+export const Start = ({size, changeSize, startGame}) => {
 
   const levels = [
     {value: 4, title: 'Новичок'},
@@ -16,6 +16,7 @@ export const Start = ({changeSize, startGame}) => {
       <select
         className="select-level"
         onChange={e => changeSize(+e.target.value)}
+        value={size}
       >
         {
           levels.map(option => (

@@ -20,7 +20,15 @@ export const Cards = ({cards, selectCard}) => {
           onClick={() => {selectCard(card.id)}}
         >
           <div className="front"/>
-          <div className="back" style={{backgroundColor: card.color}}/>
+          <div
+            className="back"
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL}/images/minions/${card.color}.png)`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover'
+            }}
+          />
         </div>
       )
     })

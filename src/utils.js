@@ -1,10 +1,11 @@
 export function generateColorsCards(size) {
   const halfArray = new Array(size ** 2 / 2)
       .fill('')
-      .map(() => `#${(Math.random().toString(16) + "000000").substring(2,8)}`)
+      // .map(() => `#${(Math.random().toString(16) + "000000").substring(2,8)}`)
+      .map((_, index) => index + 1)
   const result = [...halfArray, ...halfArray].map((card, index) => {
     return {
-      id: index+card,
+      id: index+'_'+card,
       color: card,
       flipped: false,
       hide: false
