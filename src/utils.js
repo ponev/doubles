@@ -1,15 +1,13 @@
 export function generateColorsCards(size) {
-  const halfArray = new Array(size ** 2 / 2)
-      .fill('')
-      // .map(() => `#${(Math.random().toString(16) + "000000").substring(2,8)}`)
-      .map((_, index) => index + 1)
-  const result = [...halfArray, ...halfArray].map((card, index) => {
-    return {
-      id: index+'_'+card,
-      color: card,
-      flipped: false,
-      hide: false
-    }
+  const halfArray = getRandomArray(1, 32, size ** 2 / 2)
+  const result = [...halfArray, ...halfArray]
+    .map((card, index) => {
+      return {
+        id: `${card}_${index}`,
+        color: card,
+        flipped: false,
+        hide: false
+      }
   })
   return shuffle(result)
 }
@@ -36,4 +34,12 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]]
   }
   return array
+}
+function getRandomArray (min, max, length) {
+  const arr = [];
+  while(arr.length < length){
+    const rand = Math.floor(min + Math.random() * (max + 1 - min))
+    if (arr.indexOf(rand) === -1) arr.push(rand)
+  }
+  return arr
 }
