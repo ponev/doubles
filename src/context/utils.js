@@ -1,4 +1,4 @@
-export function generateColorsCards(size) {
+export function generateCards(size) {
   const halfArray = getRandomArray(1, 32, size ** 2 / 2)
   const result = [...halfArray, ...halfArray]
     .map((card, index) => {
@@ -17,7 +17,7 @@ export function isFlippedCards(state, index) {
 }
 
 export function isGameOver(state) {
-  return state.hidedCount === (state.size**2 / 2)
+  return state.hidedCount === ((state.size ** 2) / 2)
 }
 
 export function isCheckingSelectedCards(state) {
@@ -36,10 +36,10 @@ function shuffle(array) {
   return array
 }
 function getRandomArray (min, max, length) {
-  const arr = [];
-  while(arr.length < length){
+  const array = []
+  while(array.length < length){
     const rand = Math.floor(min + Math.random() * (max + 1 - min))
-    if (arr.indexOf(rand) === -1) arr.push(rand)
+    if (array.indexOf(rand) === -1) array.push(rand)
   }
-  return arr
+  return array
 }

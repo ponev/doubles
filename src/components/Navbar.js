@@ -1,18 +1,19 @@
-import React from 'react'
-
+import React, {useContext} from 'react'
+import {GameContext} from '../context/game/gameContext'
 import logo from '../logo.png'
 
-export const Navbar = ({gameStart, gameOver}) => {
+export const Navbar = () => {
+  const {isStarted, isOvered} = useContext(GameContext)
 
   let statusGame = {
     text: '', cls: 'game-status'
   }
 
-  if (gameStart && !gameOver) {
+  if (isStarted && !isOvered) {
     statusGame.text = 'Игра началась!';
     statusGame.cls = 'game-status game-started'
   }
-  if (gameOver) {
+  if (isOvered) {
     statusGame.text = 'Игра окончена!';
     statusGame.cls = 'game-status game-over'
   }

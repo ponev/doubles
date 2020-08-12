@@ -1,6 +1,25 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
+import {GameContext} from '../context/game/gameContext'
 
-export const Cards = ({cards, selectCard}) => {
+export const Cards = () => {
+  const {
+    size,
+    cards,
+    opened,
+    updateCards,
+    selectCard,
+    playerTurn
+  } = useContext(GameContext)
+
+  useEffect(() => {
+    updateCards(size)
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
+    playerTurn()
+    // eslint-disable-next-line
+  }, [opened.length])
 
   return (
     cards.map((card) => {
@@ -17,7 +36,7 @@ export const Cards = ({cards, selectCard}) => {
         <div
           className={cls.join(' ')}
           key={card.id}
-          onClick={() => {selectCard(card.id)}}
+          onClick={() => selectCard(card.id)}
         >
           <div className="front"/>
           <div
