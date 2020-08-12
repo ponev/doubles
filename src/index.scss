@@ -19,6 +19,14 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: $text-color;
 }
+a {
+  color: $blue;
+
+  &:hover {
+    color: $green;
+    text-decoration: none;
+  }
+}
 
 .btn {
   padding: 8px 15px;
@@ -33,6 +41,9 @@ body {
     cursor: pointer;
     background: $orange;
   }
+}
+nav {
+  text-align: center;
 }
 
 .navbar {
@@ -85,7 +96,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin: 30px auto;
+  margin: 15px auto;
   width: 625px;
   height: 625px;
   border: 3px solid $card-front-color;
@@ -167,6 +178,79 @@ body {
 
   .back {
     transform: rotateY(180deg);
+  }
+}
+.results-page {
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 15px auto;
+  width: 625px;
+  min-height: 625px;
+  border: 3px solid $card-front-color;
+  padding: 3px;
+
+  .title-page {
+    font-size: 30px;
+    color: $orange;
+    text-align: center;
+    margin-bottom: 15px;
+
+    a {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      padding: 8px 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 0;
+      background: $blue;
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        background: $orange;
+      }
+    }
+  }
+
+  .tabs-results {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 2px solid $border-color;
+
+    li {
+      margin-left: 5px;
+
+      a {
+        display: block;
+        padding: 8px 15px;
+        border: 1px solid $border-color;
+        border-bottom: 2px solid $border-color;
+        border-radius: 5px 5px 0 0;
+        margin-bottom: -2px;
+        background: $green;
+        text-decoration: none;
+        color: #fff;
+
+        &:hover {
+          background: $blue;
+        }
+
+        &.active {
+          background: #fff;
+          color: $green;
+          border-bottom-color: #fff;
+        }
+      }
+    }
   }
 }
 @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {

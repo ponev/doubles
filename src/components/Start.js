@@ -1,21 +1,31 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {GameContext} from '../context/game/gameContext'
 
-export const Start = ({changeSize, startGame}) => {
+export const Start = () => {
+  const {
+    size,
+    levels,
+    changeSize,
+    startGame
+  } = useContext(GameContext)
 
-  const levels = [
-    {value: 4, title: 'Новичок'},
-    {value: 6, title: 'Уверенный'},
-    {value: 8, title: 'Эксперт'}
-  ]
+  const changeSizeHandler = event => {
+    changeSize(+event.target.value)
+  }
+  const startGameHandler = event => {
+    event.preventDefault()
+    startGame()
+  }
 
   return (
     <form
       className="start-form"
-      onSubmit={e => startGame(e)}
+      onSubmit={startGameHandler}
     >
       <select
         className="select-level"
-        onChange={e => changeSize(+e.target.value)}
+        onChange={changeSizeHandler}
+        value={size}
       >
         {
           levels.map(option => (

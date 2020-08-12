@@ -1,14 +1,13 @@
-export function generateColorsCards(size) {
-  const halfArray = new Array(size ** 2 / 2)
-      .fill('')
-      .map(() => `#${(Math.random().toString(16) + "000000").substring(2,8)}`)
-  const result = [...halfArray, ...halfArray].map((card, index) => {
-    return {
-      id: index+card,
-      color: card,
-      flipped: false,
-      hide: false
-    }
+export function generateCards(size) {
+  const halfArray = getRandomArray(1, 32, size ** 2 / 2)
+  const result = [...halfArray, ...halfArray]
+    .map((card, index) => {
+      return {
+        id: `${card}_${index}`,
+        color: card,
+        flipped: false,
+        hide: false
+      }
   })
   return shuffle(result)
 }
@@ -18,7 +17,7 @@ export function isFlippedCards(state, index) {
 }
 
 export function isGameOver(state) {
-  return state.hidedCount === (state.size**2 / 2)
+  return state.hidedCount === ((state.size ** 2) / 2)
 }
 
 export function isCheckingSelectedCards(state) {
@@ -33,6 +32,14 @@ function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+function getRandomArray (min, max, length) {
+  const array = []
+  while(array.length < length){
+    const rand = Math.floor(min + Math.random() * (max + 1 - min))
+    if (array.indexOf(rand) === -1) array.push(rand)
   }
   return array
 }
